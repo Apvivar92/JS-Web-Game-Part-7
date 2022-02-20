@@ -4,6 +4,12 @@ function newNonPlayableCharacter(x, y) {
     
     let direction = null;
 
+    function sleep(time){
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })  
+    }
+
     function moveCharacter() {
         if (direction === 'west') {
             x -= 1
@@ -23,10 +29,34 @@ function newNonPlayableCharacter(x, y) {
 
     setInterval(moveCharacter, 1)
 
-    function walkEast() {
+    async function walkEast(time) {
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        await sleep(time)
+        stop()
     }
+
+    async function walkNorth(time) {
+        direction = 'north'
+        element.src = `./assets/red-character/east.gif`
+        await sleep(time)
+        stop()
+    }
+
+    async function walkWest(time) {
+        direction = 'west'
+        element.src = `./assets/red-character/east.gif`
+        await sleep(time)
+        stop()
+    }
+
+    async function walkSouth(time) {
+        direction = 'south'
+        element.src = `./assets/red-character/east.gif`
+        await sleep(time)
+        stop()
+    }
+
 
     function walkNorth() {
         direction = 'north'
